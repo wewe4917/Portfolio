@@ -42,7 +42,19 @@
 - 각 라우터는 이웃에 연결된 라우터에 초기화를 위한 HELLO 패킷을 전송해 경로 정보를 얻음
 - 라우터 사이의 전송 지연 시간을 측정하기 위해서 ECHO 패킷을 전송
 
-## 라우팅 테이블
+### > 라우팅 테이블
 - 패킷 전송 과정에서 라우터들이 적절한 경로를 쉽게 찾을 수 있도록, 가장 기본적인 도구로 라우팅 테이블을 사용
 - **라우팅 테이블에 포함해야 하는 필수 정보는 (목적지 호스트, 다음 홉) 의 조합**
 ![image](https://user-images.githubusercontent.com/85292541/206204122-bb64505f-d2e7-43b2-9003-ada718160059.png)
+
+### > 라우팅 정보의 처리
+- 라우팅을 효과적으로 수행하려면 라우팅 정보가 현재 상황을 정확히 반영할 수 있도록 관리해야 함
+- 라우팅 정보 관리와 관련된 처리 방법
+![image](https://user-images.githubusercontent.com/85292541/206208691-6335ad74-0e9e-422b-9d3d-02755e1d8c16.png)
+
+
+>![image](https://user-images.githubusercontent.com/85292541/206211094-3eab3287-1157-4e3c-9113-2445c8bb2cc6.png)
+![image](https://user-images.githubusercontent.com/85292541/206211149-0a6ffdd7-00c5-40e3-9105-96dc8da6e59e.png)
+![image](https://user-images.githubusercontent.com/85292541/206211227-44a84c39-59e9-42dc-8cdb-642a523829a9.png)
+![image](https://user-images.githubusercontent.com/85292541/206211301-9d05d9f2-b6cd-48a6-9ee4-4f3b532369f8.png)
+
