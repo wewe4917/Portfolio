@@ -206,10 +206,19 @@
 - Source Address는 송신 호스트의 IP 주소
 - Destination Address는 수신 호스트의 IP 주소
     - IP 주소 체계는 다음과 같이 크게 다섯 종류
+    
          ![image](https://user-images.githubusercontent.com/85292541/206480356-118e5bf8-dd22-4e50-9107-254ec03b5582.png)
     - **클래스 A, B, C는 유니캐스팅에서 이용하고, 클래스 D는 멀티캐스팅에서 이용**
     - 클래스 E는 향후 새로운 응용 환경을 위하여 잠정적으로 예약된 클래스
     - 클래스 A, B, C는 주소를 netWork와 host 필드로 구분해 관리함으로써, **클래스별로 네트워크 크기에** 따라 주소 관리를 다르게 함
 - 아래 표와 같은 IP 주소값의 정보만으로 이 주소가 속한 클래스를 알 수 있음
+      ![image](https://user-images.githubusercontent.com/85292541/206483025-15478809-5054-4a31-b715-aefc27dd9854.png)
+      
+## 패킷 분할
+### > 분할의 필요성
+- 그림은 패킷 분할의 필요성을 설명
 
-![image](https://user-images.githubusercontent.com/85292541/206483025-15478809-5054-4a31-b715-aefc27dd9854.png)
+![image](https://user-images.githubusercontent.com/85292541/206485613-9e38124c-f92e-4d8b-904b-38458ee338e8.png)
+
+
+
