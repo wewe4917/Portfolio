@@ -220,5 +220,29 @@
 
 ![image](https://user-images.githubusercontent.com/85292541/206485613-9e38124c-f92e-4d8b-904b-38458ee338e8.png)
 
+### > 분할의 예
+- 그림은 IP 프로토콜의 패킷 분활 과정의 예
+    - IP 헤더를 제외한 전송데이터의 크기는 380바이트이고, 패킷은 최대 크기가 128바이트라고 가정
+    
+      ![image](https://user-images.githubusercontent.com/85292541/206488020-3fd38a55-7666-4b3b-bf41-03c926f94e96.png)
+
+## DCHP 프로토콜
+- 특정 네트워크를 관리하는 네트워크 관리자는 개별 호스트들에 수동으로 고정 IP 주소를 할달할 수 있음
+- 그러나 IP 주소 부족 등의 사유로 DHCP를 사용해 자동으로 할당할 수도 있음
+- **자동으로 할당 가능한 IP 주소는 DHCP 서버가 관리하는 풀에 저장되어 관리되며, 클라이언트로부터 IP 주소 요청이 오면 풀에서 하나의 IP 주소를 할당함 (내부 IP 주소)**
+- 이후 사용이 끝나면 다시 IP 주소 풀로 반한되어 다른 호스트가 사용 가능
+
+### > DHCP(Dynamic Host Configuration Protocol) 메시지
+- IP 주소를 원하는 클라이언트는 DHCP 서버에 요청 메시지를 전송하고 서버는 이에 대한 응답 메시지를 회신
+- DHCP 메시지의 형식은 다음과 같음     ![image](https://user-images.githubusercontent.com/85292541/206489311-43b004ff-a980-4a75-ad16-482657dde5f9.png)
+
+![image](https://user-images.githubusercontent.com/85292541/206489607-b67ec172-c2c2-42c5-9380-9af0a97419e5.png)
+
+## DHCP 프로토콜 분할
+- [그림 7-18]의 DHCP 메시지가 UDP와 IP 프로토콜로 캡슐화되어 전송되는 과정
+
+![image](https://user-images.githubusercontent.com/85292541/206490002-6a67406a-8e30-4dcf-88d3-18b89d9f437b.png)
+
+
 
 
