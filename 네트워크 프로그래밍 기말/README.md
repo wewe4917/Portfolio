@@ -58,3 +58,15 @@
 ![image](https://user-images.githubusercontent.com/85292541/206211227-44a84c39-59e9-42dc-8cdb-642a523829a9.png)
 ![image](https://user-images.githubusercontent.com/85292541/206211301-9d05d9f2-b6cd-48a6-9ee4-4f3b532369f8.png)
 
+## 혼잡 제어
+- **네트워크의 성능 감소 현상이 급격하게 악하되는 현상을 혼잡**이라고 하고, 혼잡 문제를 해결하기 위한 방안을 혼잡 제어라고 함.
+- 흐름 제어는 송신 호스트와 수신 호스트사이의 논리적인 점대점 전송 속도를 다룸.
+- **혼잡 제어는 더 넓은 관점에서 호스트와 라우터를 포함한 서브넷에서 네트워크의 전송 능력 문제를 다룸**
+![image](https://user-images.githubusercontent.com/85292541/206431866-e1568e4d-88ae-4309-bea6-a41e1f9b6248.png)
+
+### > 혼잡의 원인
+![image](https://user-images.githubusercontent.com/85292541/206432449-5a96a01c-37ff-4c8f-88a5-f5f81005ae7c.png)
+- 혼잡이 심화되는 쥬요인은 전송 시간 초과에 의한 **타임아웃 기능을 통해 패킷들이 재전송되는 데 있음**
+- 패킷의 도착 순서가 뒤바뀌면 수신 호스트는 패킷을 보관하거나 그냥 버릴 수도 있음
+- 패킷을 버리면 패킷 재전송 현상이 발생해 네트워크 혼잡도 높이는 원인이 됨
+![image](https://user-images.githubusercontent.com/85292541/206433171-0055fda5-ec4c-4976-a93c-8440105d308d.png)
