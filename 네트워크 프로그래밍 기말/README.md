@@ -132,11 +132,19 @@
 ![image](https://user-images.githubusercontent.com/85292541/206443426-0ad9e3ea-ffc9-4564-9682-a884af4c74d0.png)
       ![image](https://user-images.githubusercontent.com/85292541/206443474-4881f66a-3168-4edc-b5b2-1c8574f240d1.png)
 
-### > [RIP(Routing Information Protocol)] 프로토콜
+### > **[RIP(Routing Information Protocol)]** 프로토콜
 - RIP는 거리 벡터 방식을 사용하는 내부 라우팅 프로토콜 중에서 가장 간단하게 구현된 것
 - 소규모 네트워크 환경에 적합하며, 현재 가장 많이 사용하는 라우팅 프로토콜 중 하나
 - RIP는 다음과 같은 제한을 두어 개별 거리 정보가 라우팅 테이블에 순차적으로 적용되도록함 
     - 입력되는 거리 벡터 정보가 **새로운 네트워크의 목적지 주소**이면 라우팅 테이블에 적용
     - 입력되는 거리 벡터 정보가 기존 정보와 비교해 **목적지까지 도착하는 지연이 더 적으면 대체함**
-        - 이전 정보와 홉 수가 같아도 추가 지연 측정을 통해 지연 시간이 적으면 새로운 경로를 선택
-      
+        - 이전 정보와 *홉 수*가 같아도 추가 지연 측정을 통해 지연 시간이 적으면 새로운 경로를 선택
+    - 임의의 라우터로부터 거리 벡터 정보가 들어왔을 때, 라우팅 테이블에 해당 라우터를 다음 홉으로 하는 등록 정보가 있으면 새로운 정보로 수정
+
+- [그림7-8]에서 라우터 R1의 라우팅 테이블에 [표7-1]과 같은 정보가 기록 되어 있다고 가정
+![image](https://user-images.githubusercontent.com/85292541/206446191-09fd2be4-5709-4dbc-a338-d9ae9dbe7c3a.png)-------------------![image](https://user-images.githubusercontent.com/85292541/206446580-d9407bb9-cccd-41f2-b0f9-2fbd40358781.png)
+- 라우터 R1과 직접 연결된 **주변 라우터 R2, R3, R4, R6**으로부터 라우팅 정보가 주기적으로 입력
+- 임의의 시점에 다음의 거리 벡터 정보가 들어온다고 가정해보자. 각 값은 순서대로 Net.1, Net.2, Net.3, Net.4, Net.5까지의 거리임
+
+     ![image](https://user-images.githubusercontent.com/85292541/206448490-b67936e0-b3c9-4932-852d-3ab22b5ff442.png)
+
