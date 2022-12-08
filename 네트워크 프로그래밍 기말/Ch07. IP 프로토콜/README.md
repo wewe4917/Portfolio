@@ -190,7 +190,8 @@
 
          ![image](https://user-images.githubusercontent.com/85292541/206468278-cd2c8f32-4edd-4218-933d-1d976a4198b2.png)
 - 혼잡 제어를 위한 ECN 필드 값의 의미는 아래 표와 같음
-![image](https://user-images.githubusercontent.com/85292541/206470485-722b692e-ea87-42f6-b23d-091a27cdd9f8.png)
+
+     ![image](https://user-images.githubusercontent.com/85292541/206470485-722b692e-ea87-42f6-b23d-091a27cdd9f8.png)
 
 - DS 코드포인트라고도 하는 DS 필드 값은 차등 서비스의 기준이 되는 레이블 값으로도 64개의 트래픽 클래스를 정의
 - DS 서비스는 비교적 단순한 원리에 의하여 차등화된 서비스를 제공하지만 내부적인 처리 과정은 복잡한 구조에 의하여 이루어짐
@@ -213,7 +214,8 @@
     - 클래스 E는 향후 새로운 응용 환경을 위하여 잠정적으로 예약된 클래스
     - 클래스 A, B, C는 주소를 netWork와 host 필드로 구분해 관리함으로써, **클래스별로 네트워크 크기에** 따라 주소 관리를 다르게 함
 - 아래 표와 같은 IP 주소값의 정보만으로 이 주소가 속한 클래스를 알 수 있음
-      ![image](https://user-images.githubusercontent.com/85292541/206483025-15478809-5054-4a31-b715-aefc27dd9854.png)
+
+     ![image](https://user-images.githubusercontent.com/85292541/206483025-15478809-5054-4a31-b715-aefc27dd9854.png)
       
 ## 패킷 분할
 ### > 분할의 필요성
@@ -235,14 +237,16 @@
 
 ### > DHCP(Dynamic Host Configuration Protocol) 메시지
 - IP 주소를 원하는 클라이언트는 DHCP 서버에 요청 메시지를 전송하고 서버는 이에 대한 응답 메시지를 회신
-- DHCP 메시지의 형식은 다음과 같음     ![image](https://user-images.githubusercontent.com/85292541/206489311-43b004ff-a980-4a75-ad16-482657dde5f9.png)
+- DHCP 메시지의 형식은 다음과 같음    
 
-![image](https://user-images.githubusercontent.com/85292541/206489607-b67ec172-c2c2-42c5-9380-9af0a97419e5.png)
+     ![image](https://user-images.githubusercontent.com/85292541/206489311-43b004ff-a980-4a75-ad16-482657dde5f9.png)
+
+     ![image](https://user-images.githubusercontent.com/85292541/206489607-b67ec172-c2c2-42c5-9380-9af0a97419e5.png)
 
 ## DHCP 프로토콜 분할
 - [그림 7-18]의 DHCP 메시지가 UDP와 IP 프로토콜로 캡슐화되어 전송되는 과정
 
-![image](https://user-images.githubusercontent.com/85292541/206490002-6a67406a-8e30-4dcf-88d3-18b89d9f437b.png)
+     ![image](https://user-images.githubusercontent.com/85292541/206490002-6a67406a-8e30-4dcf-88d3-18b89d9f437b.png)
 
 
 
