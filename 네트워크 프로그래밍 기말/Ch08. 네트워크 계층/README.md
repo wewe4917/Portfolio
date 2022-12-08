@@ -75,3 +75,100 @@
 |1111 1110 10|Link 지역 주소 공간|
 |1111 1110 11|Site 지역 주소 공간|
 |1111 1111|멀티캐스트 주소 공간|
+
+## 이동 IP 프로토콜
+## 터널링 원리
+### > 상이한 전송 수단
+- 이동 IP 프로토콜을 이해하려면 먼저 터널링 원리를 알아야 함
+- 터널링 원리를 이해하기 위한 예(그림)
+
+![image](https://user-images.githubusercontent.com/85292541/206525427-a2130c77-02f4-432c-89f5-2936f05abb57.png)
+
+### > 터널링 방식
+- IP 프로토콜을 교체하는 방식(버스->배->버스)보다 문제를 간단히 해결하는 방법은 터널링 기능을 이용하는 것
+![image](https://user-images.githubusercontent.com/85292541/206525827-d5bdd522-1fe8-43ab-bee6-0876112b2628.png)
+
+## IP 터널링
+### > [그림 8-5]는 무선 호스트가 이동할 때 발생하는 데이터 경로 문제를 해결하기 위한 이동 IP 프로토콜의 기본 동작원리를 설명
+- 먼저 이동 호스트의 위치가 바뀌면 새로운 위치를 관장하는 포린 에이전트 FAnew로부터 COA를 얻음
+- 이 FAnew와 HA 사이에 터널을 형성하는 데 사용주소는 이동 호스트의 홈 에이전트 HA에 등록되어
+- HA로 라우팅된 패킷을 이동 호스트에 전달하려면 새로 형성된 터널을 통해 FAnew로 전달해야 함
+![image](https://user-images.githubusercontent.com/85292541/206527325-915593e1-f2e7-4ca0-abd5-f4dd74b965e6.png)
+
+- 이동 호스트가 상대 호스트에 데이터를 송신하는 경우
+    - 이동 호스트는 원래 패킷과 같이 IP 프로토콜 헤더의 Source Address 필드에 표기된 주소를 자신의 홈 주소로 설정해 패킷을 전송
+    - 패킷을 수신할 때는 반대로 원래 패킷의 Destination Address 필드에 자신의 홈 주소가 표기된 패킷이 전송되어 옴
+    ![image](https://user-images.githubusercontent.com/85292541/206528365-15b72be8-b1c4-46c8-a2b7-57ea66e35536.png)
+
+## 제어용 프로토콜
+- 제어 프로토콜의 대표적인 예는 데이터 전송 과정에서 오류를 제어하는 **ICMP**
+- **인터넷에서 사용자 데이터는 IP 프로토콜에 의해 전송되지만, 제어 메시지는 ICMP에 의해 전송**
+- IP 주소와 MAC 주소 사이의 변환을 담당하는 **ARP/RARP** 제어 프로토콜이 있으며, 모두 인터넷 동작을 위해 꼭 필요
+
+## ARP 프로토콜
+### > MAC 주소
+- [그림 8-7]은 송신 호스트가 물리 계층을 통해 데이터를 전송하는 과정에서 필요한 주소를 설명
+![image](https://user-images.githubusercontent.com/85292541/206532105-abc67124-e7b2-4aa3-b5a2-077f9bf4c6f2.png)
+
+## RARP 프로토콜
+### > RARP 프로토콜의 필요성
+- RARP는 **MAC 주소를 이용해 IP 주소를 제공**
+- RARP 프로토콜은 송신 호스트와 관련해서 IP 주소를 얻는 기능
+
+  ![image](https://user-images.githubusercontent.com/85292541/206533519-b5f0dc4f-6310-4fbb-b1e5-1b5e751773df.png)
+
+## ICMP 프로토콜
+### > ICMP 메시지
+- ICMP에 의해 발생하는 메시지의 종류는 크게 **오류 보고 메시지와 질의 메시지**로 나뉨
+- **오류 보고 메시지**
+    - IP 패킷을 전송하는 과정에서 발생하는 문제를 보고하는 것이 목적이며 IP 패킷을 전송한 송신 호스트에 전달
+    - ICMP는 단순히 오류 발생 사실을 통보하는 것이므로 오류의 해결은 상위계층의 몫
+    ![image](https://user-images.githubusercontent.com/85292541/206534122-b17caae7-dc49-46da-9e36-f280028b1420.png)
+- **질의 메시지**
+    - 라우터 혹은 다른 호스트들의 정보를 획득할 목적으로 사용
+    ![image](https://user-images.githubusercontent.com/85292541/206534412-96466604-c5a3-44c5-a7a3-fd8ce47db208.png) 
+### > ICMP 헤더 형식
+- ICMP 오류 보고 메시지의 구조
+
+![image](https://user-images.githubusercontent.com/85292541/206534708-708e83a6-f025-4398-a991-89df6f60c087.png)
+- ICMP 메시지 내부에 오류가 발생한 IP 패킷의 일부가 포함된 상황을 구체적으로 설명
+![image](https://user-images.githubusercontent.com/85292541/206535632-5ad9a2a2-0ef7-4345-8030-953b2cb697ce.png)
+- 질의 메시지 구조
+
+![image](https://user-images.githubusercontent.com/85292541/206535800-8b9e5861-6f0c-42d2-a7ed-26b58adc7530.png)
+
+### > ICMP 메시지 전송
+- ICMP 메시지는 데이터 링크 계층에 바로 전달되지 않고, **IP 패킷에 캡슐화된** 후에 전달
+    -ICMP 메시지는 IP 프로토콜의 데이터로 처리되므로 IP 헤더에 캡슐화되어 계층 2 프로토콜로 전달
+    
+    ![image](https://user-images.githubusercontent.com/85292541/206537379-9f2bcea1-a06c-49a7-95eb-77fa1499b020.png)
+
+## IGMP 프로토콜
+### > 그룹 관리
+- **멀티캐스트 라우팅에서는 다수의 호스트를 논리적인 하나의 단위로 관리하기 위한 그룹 관리 기능어 필요**
+- 그룹 관리의 주요 기능에는 그룹의 생성, 제거, 전송 호스트의 그룹 참가, 탈퇴 등이 있음.
+- **멑리캐스팅은 다음과 같은 측면에서 유니캐스팅보다 복잡한 기능을 제공**
+    - 다중 수신 호스트를 표시하는 멀티 캐스트 그룹 주소 표기 방법을 통일해야 함
+    - 라우터에서 IP 멀티캐스트 주소와 이 그룹에 속하는 멤버 호스트의 네트워크 주소 사이의 연관성을 처리할 수 있음
+    - 멀티캐스트 라우팅 알고리즘은 그룹에 속한 모든 멤버에게 도달하는 가장 짧은 경로를 선택하는 기능을 제공
+
+### > IGMP 헤더 구조
+- **IGMP는 임의의 호스트가 멀티캐스트 주수로 정의된 멀티캐스트 그룹에 가입하거나 탈퇴할 때 사용하는 프로토콜**
+- 멀티캐스트 그룹에 가입한 호스트와 라우터 사이에 멤버 정볼ㄹ 교환하는 목적으로도 사용
+- 그림은 IGMP 버전 2에서 사용하는 메시지 구조이며, 현재 버전 3까지 발표된 상태
+![image](https://user-images.githubusercontent.com/85292541/206538487-ed643a49-fe0d-4970-bff9-1b5f58a70525.png)
+
+### > IGMP 동작 과정
+- 자신이 IGMP 메시지에 표시된 멀티캐스트 주소의 멤버임을 다른 호스트와 라우터에 알리기 위한 목적으로 IGMP를 사용
+- **IGMP 동작 과정**
+
+![image](https://user-images.githubusercontent.com/85292541/206538888-9e8b363f-68b3-42a2-8de8-5ca9d5fbad04.png)
+
+### > IGMP 메시지의 전송
+- IGMP는 IP 프로토콜과 동등한 계층의 기능을 수행
+    - ICMP처럼 바로 데이터 링크 계층으로 전달되지 않고, IP 패킷에 캡슐화되어 보내짐
+- IGMP 메시지는 IP 프로토콜의 데이터로 처리되기 때문에 IP 패킷의 헤더에 실려서 계층 2 프로토콜로 전달
+![image](https://user-images.githubusercontent.com/85292541/206539233-e854b8f1-b9fa-4f46-98ad-10da3392fa26.png)
+
+## 인터넷에서 패킷 전송 과정 (IP 주소)
+![image](https://user-images.githubusercontent.com/85292541/206539476-9fa613e0-621b-49b7-addb-f1d24f21b565.png)
