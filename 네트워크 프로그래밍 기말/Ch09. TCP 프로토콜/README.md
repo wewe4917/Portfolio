@@ -42,4 +42,105 @@
 - 멀티 플렉싱의 종류
 
 ![image](https://user-images.githubusercontent.com/85292541/206657942-e59d9c7d-1a38-4acc-a8e4-27462a308d29.png)
-- 전송 계층의 연결 설정은 [그림 
+- 전송 계층의 연결 설정은 [그림 9-3]처럼 연결을 요청하는 프로세스의 연결 설정 요구인 **Conn_Req**와 상대편 프로세스에서 연결 수락을 의미하는 **Conn_Ack**의 회신으로 진행
+
+![image](https://user-images.githubusercontent.com/85292541/206658512-b7ac9d9e-bb09-4dcb-b50c-492b9ea89f9a.png)- - - - - - - - - - - -![image](https://user-images.githubusercontent.com/85292541/206658542-d8333a4f-e99d-4bb5-af46-94cb9b401d79.png)
+- [그림 9-3]의 (b)에서 A 프로세스에 전송할 데이터가 있으면 마지막의 Conn_Ack_Ack 대신 바로 데이터를 전송 가능
+![image](https://user-images.githubusercontent.com/85292541/206660180-e7164799-a26e-4872-bde0-71b791cc1f7f.png)
+
+### > 연결 해제
+- 연결 해제 과정은 설정 과정보다는 간단
+- ① 일방적 연결 해제 절차 방식
+   - 통신하는 한쪽 프로세스가 일방적으로 연결 해제 요청인 Disc_Req를 전송해 연결 종료를 선언할 수 있음
+   - Disc_Req에 대한 상대 프로세스의 동의가 없어도 연결이 끊김
+   
+   ![image](https://user-images.githubusercontent.com/85292541/206661165-484f7339-ca83-41b6-9ddc-4e3c55a19487.png)
+- ② 점진적 연결 해제 절차 방식
+   - 하나의 연결에 2개의 단방향 연결을 지원하는 원통이 존재하는 것과 같음
+   - A 프로세스의 데이터 전송 과정 중에서 B 프로세스의 연결 해제 요구가 발생해도 아래통 원통 기능만 정지하고, 위쪽 원통은 여전히 정상 기능을 수행
+   - 두 프로세스 사이의 연결을 완전히 종료하려면 양쪽에서 자신에게 할당된 단방향의 원통 기능을 명시적으로 정지해야 함
+   ![image](https://user-images.githubusercontent.com/85292541/206661735-647de2be-cb50-4412-8fd0-200aa31deda1.png)
+
+## TCP 기능 및 (헤더)구조
+- **TCP 는 IP 프로토콜 위에서 연결형 서비스를 지원하는 전송 계층 프로토콜**
+- TCP에서 제공하는 주요 기능
+   - 연결형 서비스를 제공
+   - 전이중 방식의 양방향 가상 회선을 제공
+   - 신뢰성 있는 데이터 전송을 보장
+
+![image](https://user-images.githubusercontent.com/85292541/206667580-0c86f282-5236-409f-bdfd-d51438d28deb.png)
+   - TCP의 세그먼트는 [그림9-8]과 같은 헤더 구조로 시작하고, 전송 데이터가 뒤따름
+   ![image](https://user-images.githubusercontent.com/85292541/206667888-ac7415fc-ce1d-41d7-abd8-2914e9cb48e1.png)
+### > TCP 헤더의 필드
+   - **Source Port/Destination Port(송신 포트/수신 포트)**
+   - **Sequence Number(순서 번호)**
+   - **Acknowledgement Number(응답 번호)**
+   - **Data Offset(데이터 옵셋)**
+   - **Reserved(예약)**
+   - **Window(윈도우)**
+   - **Checksum(체크섬)**
+   - **Urgent Pointer(긴급 포인터)**
+### > TCP 헤더의 플래그 비트
+![image](https://user-images.githubusercontent.com/85292541/206669035-069e6667-463d-4dcb-974c-914a99feb34f.png)
+
+### > 혼잡 제어
+- TCP 프로토콜에 추가된 ECN 기능은 라우터가 송신 프로세스에 명시적으로 혼잡 발생을 알려주어 송신 프로세스 스스로 트래픽을 완화하는 기술
+- TCP는 ECN 기능을 지원하기 위해 [그림 9-8]의 **CWR**필드 **ECE**필드를 정의
+   - **CWR**
+      - ECE 비트를 수신한 송신 프로세스가 송신 윈도우 크기를 줄였음을 통지하는 것이 목적
+      - 더 이상의 ECE를 전송하지 말라는 의미
+   - **ECE**
+      - ECN-Echo로도 약칭되며, 네트워크 트래픽이 많아질 때, 라우터가 송신 프로세스에 명시적으로 혼잡을 알리려고 사용
+### > 캡슐화
+- [그림9-9]는 TCP 세그먼트가 상하 계층의 데이터 단위와 어떤 관계에 있는지 설명
+![image](https://user-images.githubusercontent.com/85292541/206671852-e098d575-e043-435b-a678-d98f6eff501e.png)
+
+## 포트번호
+- **포트번호는 TCP와 UDP가 상위 계층에 제공하는 주소 표현 방식**
+- 유닉스 환경에서는 소켓으로 포트를 구현하므로, TCP/UDP 프로토콜을 사용하려면 소켓 시스템 콜의 인터페이스를 알아야함
+- 소켓 시스템 콜을 이용해 TCP 연결 설정이 되면 통신 양단의 프로세스가 사용하는 고유 주소는 해당 호스트의 IP주소와 호스트 내부의 포트 번호가 조합된 형태
+- **Well-known 포트** : 인터넷 환경에서 많이 사용하는 네트워크 응용 서비스의 서버 프로세스에 할당된 포트 번호
+- (표) Well-known 포트
+
+|서비스|포트번호|
+|:--|:--|
+|FTP(데이터 채널)|20|
+|FTP(제어 채널)|21|
+|Telnet(텔넷)|23|
+|SMTP|25|
+|DNS|53|
+|TFTP|69|
+|HTTP|80|
+|rloign|513|
+|rsh|514|
+|portmap|111|
+
+## TCP의 동작 원리
+## 연결 설정
+### > 3단계 설정 방식
+- **TCP를 사용하는 프로세스가 가장 먼저 실행하는 연결 설정**
+   - A 프로세스가 연결 설정을 요구하고, B 프로세스가 이를 수락하는 형식
+   
+   ![image](https://user-images.githubusercontent.com/85292541/206675112-80f6d0b2-291a-4f4f-8d6f-76833c06f446.png)
+## 데이터 전송
+### > 정상적인 데이터 전송
+- TCP의 데이터 전송은[그림 9-11]의 (b)처럼 양쪽 프로세스가 동시에 데이터를 전송할 수 있는 전이중 방식을 지원
+- (a)에서 개념적인 연결 설정의 2단계가 이루어지고, 이어서 (b)에서 A 프로세스가 바로 데이터 전송을 시작한다.
+![image](https://user-images.githubusercontent.com/85292541/206676909-92a42c35-6501-4b8f-81ac-8b4a9ce68e17.png)
+### > 데이터 전송 오류
+- A 프로세스가 TCP 세그먼트 3개를 연속으로 전송하고, 이 중 세 번째 세그먼트에 오류가 발생했다고 가정한 경우
+![image](https://user-images.githubusercontent.com/85292541/206677102-a2608519-7765-4de9-b9a3-3d000f277ec6.png)
+
+## 연결 해제
+- 연결 해제 단계는 연결을 해제하고자 하는 쪽에서 **FIN 플래그**를 지정해 요구
+- 연결 해제는 양쪽 프로세스의 동의 하에 진행되기 때문에 연결 해제 세그먼트를 받은 프로세스가 **FIN 플래그**로 응답할때까지 연결은 계속 유지
+
+![image](https://user-images.githubusercontent.com/85292541/206677739-4e8c0668-7816-4238-9562-a410d1c3ec76.png)
+
+## 혼잡 제어
+- **ECN** 기능은 TCP의 혼잡 제어 기능을 지원
+   - TCP 연결 단계에서 ECN 사용에 대한 동의 절차
+   
+   ![image](https://user-images.githubusercontent.com/85292541/206678018-ee9e4804-d210-47a2-8536-dea63f1b4117.png)
+- ECN 기능이 동작하는 TCP 연결을 사용하여 데이터를 전송하는 과정의 혼잡 제어 처리 
+![image](https://user-images.githubusercontent.com/85292541/206678276-84299dbe-9955-46ea-89c2-35c4f8ffd564.png)
