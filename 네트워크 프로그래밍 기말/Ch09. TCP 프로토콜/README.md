@@ -44,10 +44,9 @@
 ![image](https://user-images.githubusercontent.com/85292541/206657942-e59d9c7d-1a38-4acc-a8e4-27462a308d29.png)
 - 전송 계층의 연결 설정은 [그림 9-3]처럼 연결을 요청하는 프로세스의 연결 설정 요구인 **Conn_Req**와 상대편 프로세스에서 연결 수락을 의미하는 **Conn_Ack**의 회신으로 진행
 
-![image](https://user-images.githubusercontent.com/85292541/206658512-b7ac9d9e-bb09-4dcb-b50c-492b9ea89f9a.png)- - - - - - - - - - - -![image](https://user-images.githubusercontent.com/85292541/206658542-d8333a4f-e99d-4bb5-af46-94cb9b401d79.png)
+![image](https://user-images.githubusercontent.com/85292541/206678800-87f9b919-3c4f-485a-92b9-27676f5154d6.png)
 - [그림 9-3]의 (b)에서 A 프로세스에 전송할 데이터가 있으면 마지막의 Conn_Ack_Ack 대신 바로 데이터를 전송 가능
-![image](https://user-images.githubusercontent.com/85292541/206660180-e7164799-a26e-4872-bde0-71b791cc1f7f.png)
-
+![image](https://user-images.githubusercontent.com/85292541/206678912-6c69a5af-2654-4207-894e-9564c3aa2c2a.png)
 ### > 연결 해제
 - 연결 해제 과정은 설정 과정보다는 간단
 - ① 일방적 연결 해제 절차 방식
