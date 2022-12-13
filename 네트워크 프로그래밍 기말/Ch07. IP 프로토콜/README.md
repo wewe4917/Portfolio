@@ -199,10 +199,10 @@
 ### > 패킷 분할
 - IP 프로토콜은 상위 계층에서 내려온 전송 데이터가 패킷 하나로 전송하기에는 넘 크면 분할해 전송하는 기능을 제공
 - 패킷 분할과 관련된 필드
-    - identification(식별자 혹은 구분자)
-    - DF(Don't Fragment)
-    - MF(More Fragment)
-    - Fragment Offset(분할 옵셋)
+    - **identification(식별자 혹은 구분자)**
+    - **DF(Don't Fragment)**
+    - **MF(More Fragment)**
+    - **Fragment Offset(분할 옵셋)**
 
 ### > 주소 관련 필드
 - Source Address는 송신 호스트의 IP 주소
