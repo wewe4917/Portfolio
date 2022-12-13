@@ -22,6 +22,10 @@
 - [그림10-2]는 전송 과정에서 데이터그램을 분실하는 오류를 설명
 ![image](https://user-images.githubusercontent.com/85292541/206692416-9f5b006d-28aa-443d-9de4-49f8774a6409.png)
 
+### > 도착 순서 변경
+- [그림 10-3]은 데이터그램의 전송 순서가 뒤바뀌어 수신 프로세스에 도착한 경우\
+![image](https://user-images.githubusercontent.com/85292541/207441181-5c5a7b78-14c7-4346-8c1b-cc3fbdb42234.png)
+
 ## RTP 프로토콜
 ### > RTP
 - TCP와 UDP를 근간으로 인터넷 환경에서 실시간 서비스를 제공하는 가장 현실적인 방법 중 하나는 UDP에 데이터그램의 순서 번호 기능을 추가하는 것
