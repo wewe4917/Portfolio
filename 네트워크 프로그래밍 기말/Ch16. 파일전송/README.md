@@ -18,7 +18,7 @@
   - 서버에 등록된 로그인 이름인 hong과 암호를 FTP 서버에서 인증하면 FTP 로그인 절차가 완료\
 ![image](https://user-images.githubusercontent.com/120394200/207096199-3751c874-2adb-4b0f-919f-9abddbce3e61.png)
 - FTP 명령
-  - FTP 서비스에서는 파일을 송수시하는 get과 put 명령을 주로 사용
+  - FTP 서비스에서는 파일을 송수하는 get과 put 명령을 주로 사용
   - get 명령은 FTP 서버에서 파일을 가져오고, put 명령은 FTP서버로 파일을 전송
   - cd와 lcd 명령은 FTP 서버와 클라이언트에서 현재 작업 중인 디렉터리를 이동
   - bin Binary 명령은 8비트 데이터를 전송하며, quit 명령은 FTP 연결을 종료
