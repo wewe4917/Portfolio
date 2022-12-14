@@ -77,7 +77,7 @@
 ![image](https://user-images.githubusercontent.com/85292541/206811913-cc2cc126-8d18-4e79-bbfe-8af1f2cc534b.png)
 
 ## SMTP 프로토콜
-### > STMP의 구조
+### > SMTP의 구조
 - SMTP는 메일을 전송하는 SMTP 클라이언트와 메일을 수신하는 SMTP 서버 사이의 데이터 전송에 대한 규칙을 다루며, 명령과 응답의 교환 과정을 통해 메일을 전달
 - SMTP 클라이언트는 메일 수신자로 지정한 하나 이상의 SMTP 서버에 메일을 전달
 - 이를 위해 SMTP 서버에 대한 접근 가능성 확인, 서버와 연결 설정, 메일 전송이라는 단계를 순차적으로 진행
